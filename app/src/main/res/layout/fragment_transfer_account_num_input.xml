@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TransferAccountNumInputFragment"
+    android:background="@android:color/white"
+    android:clickable="true"
+    android:id="@+id/TransferAccountNumInputFrameLayout">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/header"
+            android:text="Transfer by Account Number"
+            android:textSize="@dimen/header"
+            android:textStyle="bold"
+            android:gravity="center|top"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/myAccountTxt"
+            android:text="FROM: "
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/header"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/myAccountEdt"
+            android:hint="My Account"
+            android:layout_alignBaseline="@+id/myAccountTxt"
+            android:layout_alignRight="@+id/myAccountTxt"
+            android:layout_alignParentRight="true"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:maxLength="10"
+            android:ems="10"
+            android:inputType="number"
+            android:text="9876543210"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/desAccountTxt"
+            android:text="TO: "
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/myAccountTxt"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/desAccountEdt"
+            android:hint="Destination Account"
+            android:layout_alignBaseline="@+id/desAccountTxt"
+            android:layout_alignRight="@+id/desAccountTxt"
+            android:layout_alignParentRight="true"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:maxLength="10"
+            android:ems="10"
+            android:inputType="number"
+            android:text="1234567890"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AmountTxt"
+            android:text="Amount: "
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/desAccountTxt"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AmountEdt"
+            android:hint="Balance Amount"
+            android:layout_alignBaseline="@+id/AmountTxt"
+            android:layout_alignRight="@+id/AmountTxt"
+            android:layout_alignParentRight="true"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:maxLength="10"
+            android:ems="10"
+            android:inputType="number"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/nextBtn"
+            android:layout_below="@+id/AmountTxt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Next"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:text="Account Register"
+        android:textSize="@dimen/header"
+        android:textStyle="bold"
+        android:gravity="center|top"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/usernameTxt"
+        android:text="Username: "
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/header"
+        android:paddingTop="20dp"
+        android:paddingLeft="20dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/usernameEdt"
+        android:hint="Username"
+        android:layout_alignBaseline="@+id/usernameTxt"
+        android:layout_alignRight="@+id/usernameTxt"
+        android:layout_alignParentRight="true"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:maxLength="10"
+        android:ems="10"
+        android:inputType="text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordTxt"
+        android:text="Password: "
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/usernameTxt"
+        android:paddingTop="20dp"
+        android:paddingLeft="20dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/passwordEdt"
+        android:hint="Password"
+        android:layout_alignBaseline="@+id/passwordTxt"
+        android:layout_alignRight="@+id/passwordTxt"
+        android:layout_alignParentRight="true"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:maxLength="10"
+        android:ems="10"
+        android:inputType="numberPassword"/>
+
+</RelativeLayout>

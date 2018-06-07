@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Internet Banking</string>
+    <string name="ip_address">http://192.168.5.104:8083/bank/account/</string>
+    <string name="input_username_error">Input username!</string>
+    <string name="input_password_error">Input password!</string>
+    <string name="bank_local">bank/account/</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="PromptPaySpinnerType">
+        <item>idcard</item>
+        <item>mobile</item>
+    </string-array>
+
+</resources>

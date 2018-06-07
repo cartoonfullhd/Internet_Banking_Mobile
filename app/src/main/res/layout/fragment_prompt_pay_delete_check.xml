@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".PromptPayDeleteCheckFragment"
+    android:clickable="true"
+    android:id="@+id/PromptPayDeleteCheckFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/header"
+            android:text="Delete Prompt Pay"
+            android:textSize="@dimen/header"
+            android:textStyle="bold"
+            android:gravity="center|top"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/typeTxt"
+            android:text="Type: "
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/header"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/typeValue"
+            android:hint="Type"
+            android:layout_alignBaseline="@+id/typeTxt"
+            android:layout_alignRight="@+id/typeTxt"
+            android:layout_alignParentRight="true"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:ems="10"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/phoneTxt"
+            android:text="Phone: "
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/typeTxt"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/phoneValue"
+            android:layout_alignBaseline="@+id/phoneTxt"
+            android:layout_alignRight="@+id/phoneTxt"
+            android:layout_alignParentRight="true"
+            android:paddingTop="20dp"
+            android:paddingRight="20dp"
+            android:ems="10"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idCardTxt"
+            android:text="Id card: "
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/phoneTxt"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/idCardValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/idCardTxt"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/idCardTxt"
+            android:ems="10"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/accountNumberTxt"
+            android:text="Account Number: "
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/idCardTxt"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/accountNumberValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/accountNumberTxt"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/accountNumberTxt"
+            android:ems="10"
+            android:text="account id"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/accountNameTxt"
+            android:text="Account Name: "
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/accountNumberTxt"
+            android:paddingTop="20dp"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/accountNameValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/accountNameTxt"
+            android:layout_alignParentRight="true"
+            android:layout_alignRight="@+id/accountNameTxt"
+            android:ems="10"
+            android:text="account name"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp" />
+
+        <Button
+            android:id="@+id/confirmBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/accountNameTxt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:text="Confirm Delete Account" />
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountDetailsFragment"
+    android:clickable="true"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Accounts Details"
+            android:textSize="@dimen/header"
+            android:gravity="center"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/accountTypeHeader"
+            android:text="Account Type"
+            android:gravity="left"
+            android:paddingLeft="@dimen/padding"
+            android:background="@android:color/darker_gray"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/accountNumTxt"
+                android:text="Account No."
+                android:gravity="left"
+                android:padding="@dimen/padding" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/accountNum"
+                android:layout_alignRight="@+id/accountNumTxt"
+                android:gravity="right"
+                android:text="xxx-x-xxxxxx"
+                android:padding="@dimen/padding" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/accountNumTxt"
+                android:id="@+id/accountTypeTxt"
+                android:text="Account Type"
+                android:gravity="left"
+                android:padding="@dimen/padding" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/accountNum"
+                android:layout_alignRight="@+id/accountNumTxt"
+                android:id="@+id/accountType"
+                android:gravity="right"
+                android:text="Account Type"
+                android:padding="@dimen/padding" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/accountTypeTxt"
+                android:id="@+id/accountAmountTxt"
+                android:text="Available Balance"
+                android:gravity="left"
+                android:padding="@dimen/padding" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/accountType"
+                android:layout_alignRight="@+id/accountAmountTxt"
+                android:id="@+id/accountAmount"
+                android:gravity="right"
+                android:text="0.00"
+                android:padding="@dimen/padding" />
+
+        </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@android:color/darker_gray">
+
+        <TextView
+            android:id="@+id/accountDateHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="left"
+            android:paddingLeft="@dimen/padding"
+            android:text="Date" />
+
+        <TextView
+            android:id="@+id/accountAmountHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:paddingRight="@dimen/padding"
+            android:text="Amount" />
+
+    </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_above="@+id/download_button"
+                android:scrollbars="vertical" />
+
+            <Button
+                android:id="@+id/download_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="Download" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</FrameLayout>

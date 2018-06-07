@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PromptPayDetailsFragment"
+    android:id="@+id/PromptPayDetailsFragment"
+    android:clickable="true"
+    android:background="@android:color/white">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Prompt Pay"
+            android:gravity="center|top"
+            android:textSize="@dimen/header"
+            android:padding="@dimen/padding"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/PromptPayRegisterbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="133dp"
+            android:text="Register" />
+
+        <Button
+            android:id="@+id/PromptPayRemovebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="133dp"
+            android:text="Delete Prompt Pay" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>
