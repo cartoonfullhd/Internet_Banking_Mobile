@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 Intent register = new Intent(LoginActivity.this, RegisterActivity.class);
-                register.putExtra("local_ip", ip_local);
+                register.putExtra("local_ip", ipEdt.getText().toString());
                 startActivity(register);
             }
         });
