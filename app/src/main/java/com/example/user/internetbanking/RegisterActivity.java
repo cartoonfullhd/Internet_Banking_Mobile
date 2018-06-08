@@ -23,7 +23,7 @@ public class RegisterActivity extends AppCompatActivity
 {
     EditText usernameEdt, passwordEdt, nameEdt, addressEdt, phoneEdt, emailEdt;
     Button registerBtn;
-    String ip_local;
+    String local_ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,18 +37,27 @@ public class RegisterActivity extends AppCompatActivity
         phoneEdt = findViewById(R.id.phoneEdt);
         emailEdt = findViewById(R.id.emailEdt);
         registerBtn = findViewById(R.id.registerBtn);
-        ip_local = getIntent().getStringExtra("local_ip");
+        local_ip = getIntent().getStringExtra("local_ip");
 
         registerBtn.setOnClickListener(new View.OnClickListener()
         {
             public  void onClick(View v)
             {
-                new registerAccount().execute();
+                if(usernameEdt.getText().toString().isEmpty() || passwordEdt.getText().toString().isEmpty() ||
+                        nameEdt.getText().toString().isEmpty() || addressEdt.getText().toString().isEmpty() ||
+                        phoneEdt.getText().toString().isEmpty() || emailEdt.getText().toString().isEmpty())
+                {
+                    Toast.makeText(RegisterActivity.this, "Please input again", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    new checkUserName().execute();
+                }
             }
         });
     }
 
-    private class registerAccount extends AsyncTask<Void, Void, Integer>
+    private class checkUserName extends AsyncTask<Void, Void, Integer>
     {
         @Override
         protected void onPreExecute()
@@ -60,7 +69,63 @@ public class RegisterActivity extends AppCompatActivity
         protected Integer doInBackground(Void... params)
         {
             Integer status = 0;
-            String JSONResult = "";
+            URL url;
+            HttpURLConnection urlConnection = null;
+            String urlParameter = "checkusername?username=" + usernameEdt.getText().toString();
+
+            try
+            {
+                url = new URL(local_ip + getResources().getString(R.string.bank_local) + urlParameter);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("GET");
+                status = urlConnection.getResponseCode();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+            finally
+            {
+                if(urlConnection != null)
+                {
+                    urlConnection.disconnect();
+                }
+            }
+            return status;
+        }
+
+        @Override
+        protected void onPostExecute(Integer result)
+        {
+            super.onPostExecute(result);
+            if(result == 200)
+            {
+                Toast.makeText(RegisterActivity.this, "Username duplicated", Toast.LENGTH_LONG).show();
+            }
+            else{
+                new registerCustomer().execute();
+            }
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values)
+        {
+
+        }
+    }
+
+    private class registerCustomer extends AsyncTask<Void, Void, Integer>
+    {
+        @Override
+        protected void onPreExecute()
+        {
+
+        }
+
+        @Override
+        protected Integer doInBackground(Void... params)
+        {
+            Integer status = 0;
             URL url;
             HttpURLConnection urlConnection = null;
             JSONObject jsonParam = new JSONObject();
@@ -82,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity
 
             try
             {
-                url = new URL(ip_local + getResources().getString(R.string.bank_local) + "addaccount");
+                url = new URL(local_ip + getResources().getString(R.string.bank_local) + "addaccount");
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setRequestProperty("Content-Type","application/json");
@@ -95,7 +160,6 @@ public class RegisterActivity extends AppCompatActivity
                 printout.flush();
                 printout.close();
                 status = urlConnection.getResponseCode();
-
             }
             catch (Exception e)
             {

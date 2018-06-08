@@ -34,7 +34,7 @@
         android:layout_alignParentRight="true"
         android:paddingTop="20dp"
         android:paddingRight="20dp"
-        android:maxLength="10"
+        android:maxLength="15"
         android:ems="10"
         android:inputType="text"/>
 
@@ -82,7 +82,7 @@
         android:layout_alignParentRight="true"
         android:paddingTop="20dp"
         android:paddingRight="20dp"
-        android:maxLength="10"
+        android:maxLength="15"
         android:ems="10"
         android:inputType="text"/>
 
@@ -154,7 +154,7 @@
         android:layout_alignParentRight="true"
         android:paddingTop="20dp"
         android:paddingRight="20dp"
-        android:maxLength="10"
+        android:maxLength="20"
         android:ems="10"
         android:inputType="textEmailAddress"/>
 
