@@ -1,7 +1,5 @@
-package com.example.user.internetbanking;
+package com.example.user.internetbanking.fragment.PromptPay;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +15,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.user.internetbanking.R;
+import com.example.user.internetbanking.model.Account;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,17 +27,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class TransferPromptPayInputFragment extends Fragment
+public class PromptPayRegisterFragment extends Fragment
 {
-    String customer_id, myCustomerName, local_ip;
-    private EditText myAccountEdt, AmountEdt, phoneEdt, idCardEdt;
-    private Button nextBtn;
-    private Bundle bundle = new Bundle();
     Spinner promptPayType;
+    Button nextBtn;
+    EditText accountIdEdt, phoneEdt, idCardEdt;
+    String customerName;
+    private Bundle bundle = new Bundle();
     String value;
-    PromptPayAccount promptPayAccount;
+    String customer_id, local_ip;
 
-    public TransferPromptPayInputFragment()
+    public PromptPayRegisterFragment()
     {
         // Required empty public constructor
     }
@@ -51,9 +52,10 @@ public class TransferPromptPayInputFragment extends Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_transfer_prompt_pay_input, container, false);
+        return inflater.inflate(R.layout.fragment_prompt_pay_register, container, false);
     }
 
     @Override
@@ -62,12 +64,11 @@ public class TransferPromptPayInputFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
 
         // Bind your views.
-        myAccountEdt = view.findViewById(R.id.myAccountEdt);
+        promptPayType = view.findViewById(R.id.typeSpinner);
+        nextBtn = view.findViewById(R.id.nextBtn);
+        accountIdEdt = view.findViewById(R.id.accountNumberEdt);
         idCardEdt = view.findViewById(R.id.idCardEdt);
         phoneEdt = view.findViewById(R.id.phoneEdt);
-        promptPayType = view.findViewById(R.id.typeSpinner);
-        AmountEdt = view.findViewById(R.id.AmountEdt);
-        nextBtn = view.findViewById(R.id.nextBtn);
 
         // Create your layout manager.
 
@@ -113,13 +114,20 @@ public class TransferPromptPayInputFragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                if(AmountEdt.getText().toString().equals("0") || AmountEdt.getText().toString().matches(""))
+                if(accountIdEdt.getText().toString().isEmpty())
                 {
-                    AmountEdt.setError("Input amount");
+                    accountIdEdt.setError("Input account id");
                 }
-                else
+                else if((idCardEdt.isEnabled() && idCardEdt.getText().toString().isEmpty()) || idCardEdt.getText().toString().length() < 13)
                 {
-                    new checkAccount().execute();
+                    idCardEdt.setError("Input id card again");
+                }
+                else if(phoneEdt.isEnabled() && phoneEdt.getText().toString().isEmpty())
+                {
+                    phoneEdt.setError("Input phone number");
+                }
+                else{
+                    new PromptPayRegisterFragment.checkAccount().execute();
                 }
             }
         });
@@ -140,10 +148,10 @@ public class TransferPromptPayInputFragment extends Fragment
             HttpURLConnection urlConnection = null;
             String line;
             String JSONResult = "";
-            String urlParameters  = "?account_id=" + myAccountEdt.getText().toString();
+            String urlParameters  = "?account_id=" + accountIdEdt.getText().toString();
             try
             {
-                url = new URL( local_ip + getResources().getString(R.string.bank_local)+ "checkaccount" + urlParameters);
+                url = new URL(local_ip + getResources().getString(R.string.bank_local)+ "checkaccount" + urlParameters);
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 //InputStream decode urlConnection to Byte format
@@ -179,7 +187,7 @@ public class TransferPromptPayInputFragment extends Fragment
             super.onPostExecute(result);
             if(result.equals("Success"))
             {
-                new checkAnyId().execute();
+                new PromptPayRegisterFragment.checkAnyId().execute();
             }
             else{
                 Toast.makeText(getActivity(), "Account number invalid! \n Try again!",
@@ -258,21 +266,11 @@ public class TransferPromptPayInputFragment extends Fragment
             super.onPostExecute(result);
             if(status == 200)
             {
-                try
-                {
-                    JSONObject APIDObj = new JSONObject(result);
-                    promptPayAccount = new PromptPayAccount(APIDObj.getString("AIPID"), APIDObj.getString("IDValue"), APIDObj.getString("IDType"), APIDObj.getString("BankCode"), APIDObj.getString("Status"), APIDObj.getString("AccountID"), APIDObj.getString("AccountName"), APIDObj.getString("RegisterDTM"));
-                    new getCustomerDetail().execute();
-                }
-                catch (JSONException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                Toast.makeText(getActivity(), "Data duplicated! \n Try again!",
+                        Toast.LENGTH_LONG).show();
             }
             else{
-                Toast.makeText(getActivity(), "Any ID not found \n Try again!",
-                        Toast.LENGTH_LONG).show();
+                new PromptPayRegisterFragment.getCustomerDetail().execute();
             }
         }
 
@@ -338,8 +336,8 @@ public class TransferPromptPayInputFragment extends Fragment
             try
             {
                 JSONObject customerObj = new JSONObject(result);
-                myCustomerName = customerObj.getString("name");
-                new getAccountDetail().execute();
+                customerName = customerObj.getString("name");
+                new PromptPayRegisterFragment.getAccountDetail().execute();
             }
             catch (JSONException e)
             {
@@ -373,7 +371,7 @@ public class TransferPromptPayInputFragment extends Fragment
             String urlParameter = "account?accountId=";
             try
             {
-                url = new URL(local_ip + getResources().getString(R.string.bank_local)+ urlParameter + myAccountEdt.getText().toString());
+                url = new URL(local_ip + getResources().getString(R.string.bank_local)+ urlParameter + accountIdEdt.getText().toString());
                 urlConnection = (HttpURLConnection) url.openConnection();
                 urlConnection.setRequestMethod("GET");
                 //InputStream decode urlConnection to Byte format
@@ -409,28 +407,23 @@ public class TransferPromptPayInputFragment extends Fragment
             super.onPostExecute(result);
             try
             {
-                JSONObject accountObj = new JSONObject(result);
-                Account account = new Account(accountObj.getString("accountId"), accountObj.getString("customerId"), accountObj.getString("bankCode"), accountObj.getString("accountType"), Double.parseDouble(accountObj.getString("balanceAmount")));
+                    JSONObject accountObj = new JSONObject(result);
+                    Account account = new Account(accountObj.getString("accountId"), accountObj.getString("customerId"), accountObj.getString("bankCode"), accountObj.getString("accountType"), Double.parseDouble(accountObj.getString("balanceAmount")));
 
-                bundle.putString("myCustomerName", myCustomerName);
-                bundle.putString("desAccountName", promptPayAccount.getAccountName());
-                bundle.putString("desAccountId", promptPayAccount.getAccountID());
-                bundle.putString("desAPID", promptPayAccount.getAIPID());
-                bundle.putString("desBankCode", promptPayAccount.getBankCode());
-                bundle.putString("myAccountId", account.getAccountId());
-                bundle.putString("myBankCode", account.getBankCode());
-                bundle.putString("IDType", promptPayAccount.getIDType());
-                bundle.putString("IDValue", promptPayAccount.getIDValue());
-                bundle.putString("amount", AmountEdt.getText().toString());
-                bundle.putString("CUSTOMER_ID", customer_id);
-                bundle.putString("local_ip", local_ip);
+                    bundle.putString("customerName", customerName);
+                    bundle.putString("accountId", account.getAccountId());
+                    bundle.putString("bankCode", account.getBankCode());
+                    bundle.putString("IDType", promptPayType.getSelectedItem().toString());
+                    bundle.putString("IDValue", value);
+                    bundle.putString("CUSTOMER_ID", customer_id);
+                    bundle.putString("local_ip", local_ip);
 
-                TransferPromptPayCheckFragment transferPromptPayCheckFragment = new TransferPromptPayCheckFragment();
-                transferPromptPayCheckFragment.setArguments(bundle);
-                FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-                fragTransaction.replace(R.id.TransferPromptPayInputFragment,transferPromptPayCheckFragment );
-                fragTransaction.addToBackStack(null);
-                fragTransaction.commit();
+                    PromptPayRegisterCheckFragment promptPayRegisterCheckFragment = new PromptPayRegisterCheckFragment();
+                    promptPayRegisterCheckFragment.setArguments(bundle);
+                    FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
+                    fragTransaction.replace(R.id.PromptPayRegisterFragment,promptPayRegisterCheckFragment );
+                    fragTransaction.addToBackStack(null);
+                    fragTransaction.commit();
             }
             catch (JSONException e)
             {

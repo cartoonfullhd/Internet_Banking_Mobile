@@ -1,7 +1,5 @@
-package com.example.user.internetbanking;
+package com.example.user.internetbanking.fragment.Transfer;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,14 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class PromptPayDetailsFragment extends Fragment
+import com.example.user.internetbanking.R;
+
+public class TransferFragment extends Fragment
 {
+    private Button accountNumBtn, promptPayBtn;
     String customer_id, local_ip;
-    Button PromptPayRegisterbtn, PromptPayRemovebtn;
     private Bundle bundle = new Bundle();
 
-    public PromptPayDetailsFragment()
-    {
+    public TransferFragment() {
         // Required empty public constructor
     }
 
@@ -35,7 +34,7 @@ public class PromptPayDetailsFragment extends Fragment
                              Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_prompt_pay_details, container, false);
+        return inflater.inflate(R.layout.fragment_transfer, container, false);
     }
 
     @Override
@@ -44,41 +43,40 @@ public class PromptPayDetailsFragment extends Fragment
         super.onViewCreated(view, savedInstanceState);
 
         // Bind your views.
-        PromptPayRegisterbtn = view.findViewById(R.id.PromptPayRegisterbutton);
-        PromptPayRemovebtn = view.findViewById(R.id.PromptPayRemovebutton);
+        accountNumBtn = view.findViewById(R.id.AccountNumberbutton);
+        promptPayBtn = view.findViewById(R.id.PromptPaybutton);
 
         // Create your layout manager.
-        PromptPayRegisterbtn.setOnClickListener(new View.OnClickListener()
+        accountNumBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 bundle.putString("CUSTOMER_ID", customer_id);
                 bundle.putString("local_ip", local_ip);
-                PromptPayRegisterFragment promptPayRegisterFragment = new PromptPayRegisterFragment();
-                promptPayRegisterFragment.setArguments(bundle);
+                TransferAccountNumInputFragment transferAccountNumInputFragment = new TransferAccountNumInputFragment();
+                transferAccountNumInputFragment.setArguments(bundle);
                 FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-                fragTransaction.replace(R.id.PromptPayDetailsFragment,promptPayRegisterFragment );
+                fragTransaction.replace(R.id.TransferFrameLayout,transferAccountNumInputFragment );
                 fragTransaction.addToBackStack(null);
                 fragTransaction.commit();
             }
         });
 
-        PromptPayRemovebtn.setOnClickListener(new View.OnClickListener()
+        promptPayBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
                 bundle.putString("CUSTOMER_ID", customer_id);
                 bundle.putString("local_ip", local_ip);
-                PromptPayDeleteFragment promptPayDeleteFragment = new PromptPayDeleteFragment();
-                promptPayDeleteFragment.setArguments(bundle);
+                TransferPromptPayInputFragment transferPromptPayInputFragment = new TransferPromptPayInputFragment();
+                transferPromptPayInputFragment.setArguments(bundle);
                 FragmentTransaction fragTransaction = getFragmentManager().beginTransaction();
-                fragTransaction.replace(R.id.PromptPayDetailsFragment,promptPayDeleteFragment );
+                fragTransaction.replace(R.id.TransferFrameLayout,transferPromptPayInputFragment );
                 fragTransaction.addToBackStack(null);
                 fragTransaction.commit();
             }
         });
-
     }
 }

@@ -1,4 +1,4 @@
-package com.example.user.internetbanking;
+package com.example.user.internetbanking.fragment.Account;
 
 import android.Manifest;
 import android.app.NotificationManager;
@@ -26,6 +26,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.user.internetbanking.R;
+import com.example.user.internetbanking.adapter.TxnAdapter;
+import com.example.user.internetbanking.model.Txn;
 
 import org.json.JSONArray;
 import org.json.JSONException;

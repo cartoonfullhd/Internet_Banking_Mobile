@@ -1,21 +1,21 @@
-package com.example.user.internetbanking;
+package com.example.user.internetbanking.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.user.internetbanking.R;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -24,11 +24,13 @@ public class RegisterActivity extends AppCompatActivity
     EditText usernameEdt, passwordEdt, nameEdt, addressEdt, phoneEdt, emailEdt;
     Button registerBtn;
     String local_ip;
+    private static final String TAG = "Test";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        Log.i(TAG, "onCreate");
         setContentView(R.layout.activity_register);
         usernameEdt = findViewById(R.id.usernameEdt);
         passwordEdt = findViewById(R.id.passwordEdt);
@@ -55,6 +57,48 @@ public class RegisterActivity extends AppCompatActivity
                 }
             }
         });
+    }
+
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+        Log.i(TAG, "onRestart");
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        Log.i(TAG, "onStart");
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        Log.i(TAG, "onResume?");
+    }
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        Log.i(TAG, "onPause");
+    }
+
+    @Override
+    public void onStop()
+    {
+        super.onStop();
+        Log.i(TAG, "onStop");
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        Log.i(TAG, "onDestroy");
     }
 
     private class checkUserName extends AsyncTask<Void, Void, Integer>

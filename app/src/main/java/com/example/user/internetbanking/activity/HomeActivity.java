@@ -1,4 +1,4 @@
-package com.example.user.internetbanking;
+package com.example.user.internetbanking.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -8,10 +8,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.user.internetbanking.fragment.Account.AccountFragment;
+import com.example.user.internetbanking.fragment.PromptPay.PromptPayDetailsFragment;
+import com.example.user.internetbanking.R;
+import com.example.user.internetbanking.fragment.Transfer.TransferFragment;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.support.v4.view.PagerAdapter.POSITION_NONE;
 
 public class HomeActivity extends AppCompatActivity {
     private TabLayout tabLayout;

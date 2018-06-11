@@ -1,4 +1,4 @@
-package com.example.user.internetbanking;
+package com.example.user.internetbanking.fragment.Transfer;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.user.internetbanking.R;
+import com.example.user.internetbanking.activity.HomeActivity;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

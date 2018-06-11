@@ -1,17 +1,19 @@
-package com.example.user.internetbanking;
+package com.example.user.internetbanking.fragment.Account;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.user.internetbanking.R;
+import com.example.user.internetbanking.adapter.AccountAdapter;
+import com.example.user.internetbanking.model.Account;
 
 import org.json.JSONArray;
 import org.json.JSONException;

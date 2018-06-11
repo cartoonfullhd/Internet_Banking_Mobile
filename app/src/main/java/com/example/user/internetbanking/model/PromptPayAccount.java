@@ -1,4 +1,4 @@
-package com.example.user.internetbanking;
+package com.example.user.internetbanking.model;
 
 public class PromptPayAccount
 {

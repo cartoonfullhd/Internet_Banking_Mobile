@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TransferPromptPayCheckFragment"
+    tools:context=".fragment.Transfer.TransferPromptPayCheckFragment"
     android:id="@+id/TransferPromptPayCheckFragment"
     android:clickable="true"
     android:background="@android:color/white">

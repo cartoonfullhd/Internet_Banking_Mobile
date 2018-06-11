@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PromptPayRegisterFragment"
+    tools:context=".fragment.PromptPay.PromptPayRegisterFragment"
     android:background="@android:color/white"
     android:clickable="true"
     android:id="@+id/PromptPayRegisterFragment">

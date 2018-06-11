@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".PromptPayDeleteFragment"
+    tools:context=".fragment.PromptPay.PromptPayDeleteFragment"
     android:clickable="true"
     android:id="@+id/PromptPayDeleteFragment">
 

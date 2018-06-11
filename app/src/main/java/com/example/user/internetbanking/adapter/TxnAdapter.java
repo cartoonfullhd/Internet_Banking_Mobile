@@ -1,10 +1,13 @@
-package com.example.user.internetbanking;
+package com.example.user.internetbanking.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.user.internetbanking.R;
+import com.example.user.internetbanking.model.Txn;
 
 import java.util.List;
 

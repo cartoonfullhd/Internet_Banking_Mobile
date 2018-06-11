@@ -1,7 +1,5 @@
-package com.example.user.internetbanking;
+package com.example.user.internetbanking.fragment.PromptPay;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,6 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.user.internetbanking.R;
+import com.example.user.internetbanking.model.PromptPayAccount;
 
 import org.json.JSONException;
 import org.json.JSONObject;
