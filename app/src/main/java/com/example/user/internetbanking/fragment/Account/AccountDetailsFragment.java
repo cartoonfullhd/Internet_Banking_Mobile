@@ -60,6 +60,7 @@ public class AccountDetailsFragment extends Fragment
     private Context context;
     private NotificationManager manager;
     private NotificationCompat.Builder mBuilder;
+    private String urlDownloadParameter = "txnreport";
 
 
     public AccountDetailsFragment()
@@ -142,7 +143,7 @@ public class AccountDetailsFragment extends Fragment
                         }
                     });
 
-                    downloadFileFromURL.execute("https://books.sonatype.com//-book/pdf/mvnref-pdf.pdf");
+                    downloadFileFromURL.execute(local_ip + getResources().getString(R.string.bank_local) + urlDownloadParameter + "?account_id=" + accountId);
                     mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener()
                     {
                         @Override
@@ -226,7 +227,7 @@ public class AccountDetailsFragment extends Fragment
 
                 input = connection.getInputStream();
 
-                output = new FileOutputStream(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsoluteFile() + "/Download.pdf");
+                output = new FileOutputStream(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsoluteFile() + "/TxnReport_" + accountId + ".pdf");
 
                 byte data[] = new byte[4096];
                 long total = 0;
@@ -315,7 +316,7 @@ public class AccountDetailsFragment extends Fragment
             {
                 Toast.makeText(context,"File downloaded", Toast.LENGTH_SHORT).show();
 
-                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsoluteFile() + "/Download.pdf");
+                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsoluteFile() + "/TxnReport_" + accountId + ".pdf");
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setDataAndType(Uri.fromFile(file), "application/pdf");
                 intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
